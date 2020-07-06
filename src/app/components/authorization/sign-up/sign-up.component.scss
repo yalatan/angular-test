@@ -1,16 +1,35 @@
+@import '../../../../colors';
+
 .container {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  .row {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 ::ng-deep .mat-card {
-  background-color: grey;
+  background-color: $theme-color;
 }
 ::ng-deep .mat-form-field {
   width: 100%;
 }
 ::ng-deep .mat-card-title {
   line-height: 70px;
+}
+.mat-raised-button {
+  text-transform: uppercase;
+}
+::ng-deep a.mat-raised-button {
+  color: $text-color;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  &:hover {
+    background-color: $theme-color;
+  }
 }

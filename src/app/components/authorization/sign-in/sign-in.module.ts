@@ -1,26 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
-import { SignInComponent } from '../sign-in/sign-in.component';
+import { SignInComponent } from "../sign-in/sign-in.component";
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatCardModule } from "@angular/material/card";
 
 const routes = [
   {
-      path     : 'signIn',
-      component: SignInComponent
-  }
+    path: "signin",
+    component: SignInComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [
-    SignInComponent,
-  ],
+  declarations: [SignInComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -30,7 +28,7 @@ const routes = [
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatCardModule
-  ]
+    MatCardModule,
+  ],
 })
-export class SignInModule { }
+export class SignInModule {}

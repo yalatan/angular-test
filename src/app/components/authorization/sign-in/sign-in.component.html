@@ -28,7 +28,14 @@
       </p>
     </mat-card-content>
 
-
-    <button mat-stroked-button color="primary" [disabled]="loginForm.invalid" (click)="loginUser()">SIGN IN</button>
+    <div class="row">
+      <button mat-stroked-button color="primary" [disabled]="loginForm.invalid" (click)="loginUser()">SIGN IN</button>
+    </div>
+    <div class="row">
+      <a mat-raised-button [routerLink]="'/'">
+        <mat-icon matSuffix class="secondary-text">undo</mat-icon> back
+      </a>
+      <a mat-raised-button [routerLink]="'/home'"> next <mat-icon matSuffix class="secondary-text">redo</mat-icon></a>
+    </div>
   </mat-card>
 </form>
