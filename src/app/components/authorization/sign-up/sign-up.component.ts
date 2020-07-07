@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { IUserCreateModel } from "../../../models/user.model";
+import { LocalStorageService } from "../../../services/local-storage.service";
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: "app-sign-up",
@@ -11,12 +14,17 @@ export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
   passwordPlaceholder = "Password (8 or More Characters)";
   recaptcha: any[];
+  user: IUserCreateModel;
+  isErrorMessageEmail: Boolean = false;
+  sitekey = environment.site_key_reCAPTCHA;
 
-
-  constructor(private _formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private _localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
-
     this.registerForm = this._formBuilder.group({
       firstName: [
         "",
@@ -24,7 +32,7 @@ export class SignUpComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(50),
-          Validators.pattern('^[a-zA-Z\s]*$')
+          Validators.pattern("^[a-zA-Zs]*$"),
         ]),
       ],
       lastName: [
@@ -33,7 +41,7 @@ export class SignUpComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(50),
-          Validators.pattern('^[a-zA-Z\s]*$')
+          Validators.pattern("^[a-zA-Zs]*$"),
         ]),
       ],
       email: ["", [Validators.required, Validators.email]],
@@ -46,17 +54,26 @@ export class SignUpComponent implements OnInit {
         ]),
       ],
     });
+  }
 
+  resolved(captchaResponse: any[]) {
+    this.recaptcha = captchaResponse;
   }
 
   registrateUser(): void {
-    this.router.navigate(["/home"]);
-  }
+    this.user = {
+      FirstName: this.registerForm.value.firstName,
+      LastName: this.registerForm.value.lastName,
+      Email: this.registerForm.value.email,
+      Password: this.registerForm.value.password,
+    };
 
-  resolved(captchaResponse: any[]){
-this.recaptcha = captchaResponse;
-console.log('this.recaptcha', this.recaptcha);
-
+    if (this._localStorageService.saveUserToUsersList(this.user)) {
+      this._localStorageService.setCurrentUser(this.user);
+      this.registerForm.reset();
+      this.router.navigate(["/home"]);
+    } else {
+      this.isErrorMessageEmail = true;
+    }
   }
- 
 }

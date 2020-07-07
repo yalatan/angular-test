@@ -9,7 +9,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
-import { RecaptchaModule, RecaptchaV3Module } from 'ng-recaptcha';
+import { RecaptchaModule, RecaptchaV3Module } from "ng-recaptcha";
 
 const routes = [
   {
@@ -30,7 +30,8 @@ const routes = [
     MatIconModule,
     MatInputModule,
     MatCardModule,
-    RecaptchaModule, RecaptchaV3Module
+    RecaptchaModule,
+    RecaptchaV3Module,
   ],
 })
 export class SignInModule {}

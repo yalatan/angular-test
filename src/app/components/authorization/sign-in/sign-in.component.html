@@ -1,8 +1,8 @@
 <div class="container">
 <header class="header">
-    <a mat-raised-button [routerLink]="'/'">
+    <button mat-raised-button [routerLink]="'/'">
       <mat-icon matSuffix class="secondary-text">undo</mat-icon> back
-    </a>
+    </button>
     <button mat-raised-button  [disabled]="loginForm.invalid" (click)="loginUser()">SIGN IN</button>
   
 </header>
@@ -25,6 +25,11 @@
             </mat-error>
           </mat-form-field>
         </p>
+        <mat-hint *ngIf="isErrorMessage">
+          This user is not available. Please, <button mat-raised-button [routerLink]="'/signup'">
+            Sign Up
+          </button>
+        </mat-hint>
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
@@ -36,7 +41,7 @@
           </mat-form-field>
         </p>
         <p class="recaptcha">
-          <re-captcha (resolved)="resolved($event)" siteKey="6Lcxl64ZAAAAAJmWM3qchGz1uCBQtyAYvgNPBJel"></re-captcha>
+          <re-captcha (resolved)="resolved($event)" siteKey="sitekey"></re-captcha>
                       </p>
       </mat-card-content>
     </mat-card>

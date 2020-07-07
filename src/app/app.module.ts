@@ -1,15 +1,47 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from "@angular/router";
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import {MatButtonModule} from '@angular/material/button';
 
 import { RecaptchaModule, RecaptchaV3Module } from 'ng-recaptcha';
+
+import { LandingPageComponent } from "../app/components/landing-page/landing-page.component";
+import { HomePageComponent } from "../app/components/home-page/home-page.component";
+import { SignUpModule } from "../app/components/authorization/sign-up/sign-up.module";
+import { SignInModule } from "../app/components/authorization/sign-in/sign-in.module";
+
+const routes: Routes = [
+  {
+    path: "",
+    redirectTo: "landing",
+    pathMatch: "full",
+  },
+  {
+    path: "landing",
+    component: LandingPageComponent,
+  },
+  {
+    path: "signin",
+    redirectTo: "signin",
+  },
+  {
+    path: "signup",
+    redirectTo: "signup",
+  },
+
+  {
+    path: "home",
+    component: HomePageComponent,
+  },
+
+  {
+    path: "**",
+    redirectTo: "landing",
+  },
+];
 
 @NgModule({
   declarations: [
@@ -19,12 +51,13 @@ import { RecaptchaModule, RecaptchaV3Module } from 'ng-recaptcha';
   ],
   imports: [
     BrowserModule,
-    RouterModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatButtonModule,
     RecaptchaModule,
-    RecaptchaV3Module
+    RecaptchaV3Module,
+    SignUpModule, 
+    SignInModule
   ],
   providers: [],
   bootstrap: [AppComponent]
