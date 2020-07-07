@@ -9,6 +9,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import {MatButtonModule} from '@angular/material/button';
 
+import { RecaptchaModule, RecaptchaV3Module } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    RecaptchaModule,
+    RecaptchaV3Module
   ],
   providers: [],
   bootstrap: [AppComponent]

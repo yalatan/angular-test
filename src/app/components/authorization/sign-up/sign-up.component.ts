@@ -10,10 +10,13 @@ import { Router } from "@angular/router";
 export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
   passwordPlaceholder = "Password (8 or More Characters)";
+  recaptcha: any[];
+
 
   constructor(private _formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
+
     this.registerForm = this._formBuilder.group({
       firstName: [
         "",
@@ -41,9 +44,17 @@ export class SignUpComponent implements OnInit {
         ]),
       ],
     });
+
   }
 
   registrateUser(): void {
     this.router.navigate(["/home"]);
   }
+
+  resolved(captchaResponse: any[]){
+this.recaptcha = captchaResponse;
+console.log('this.recaptcha', this.recaptcha);
+
+  }
+ 
 }

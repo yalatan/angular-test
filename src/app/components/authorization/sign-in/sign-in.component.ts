@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
+  recaptcha: any[];
 
   constructor(private _formBuilder: FormBuilder, private router: Router) {}
 
@@ -28,4 +29,9 @@ export class SignInComponent implements OnInit {
   loginUser(): void {
     this.router.navigate(["/home"]);
   }
+
+  resolved(captchaResponse: any[]){
+    this.recaptcha = captchaResponse;
+    console.log('this.recaptcha', this.recaptcha);
+}
 }
