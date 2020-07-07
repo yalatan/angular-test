@@ -24,6 +24,7 @@ export class SignUpComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(50),
+          Validators.pattern('^[a-zA-Z\s]*$')
         ]),
       ],
       lastName: [
@@ -32,6 +33,7 @@ export class SignUpComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(50),
+          Validators.pattern('^[a-zA-Z\s]*$')
         ]),
       ],
       email: ["", [Validators.required, Validators.email]],
