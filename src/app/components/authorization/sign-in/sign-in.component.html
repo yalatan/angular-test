@@ -41,7 +41,8 @@
           </mat-form-field>
         </p>
         <p class="recaptcha">
-          <re-captcha (resolved)="resolved($event)" siteKey="sitekey"></re-captcha>
+          <!-- <re-captcha (resolved)="resolved($event)" siteKey="sitekey"></re-captcha> -->
+          <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="{{sitekey}}"></re-captcha>
                       </p>
       </mat-card-content>
     </mat-card>

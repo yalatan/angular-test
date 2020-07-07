@@ -7,7 +7,7 @@
       UP</button>
   </header>
   <main class="main">
-    <form class="form" [formGroup]="registerForm">
+    <form class="form" [formGroup]="registerForm" #captchaProtectedForm="ngForm" >
       <mat-card>
         <mat-card-title>CREATE AN ACCOUNT</mat-card-title>
         <mat-card-content>
@@ -71,8 +71,9 @@
           </p>
 
           <p class="recaptcha">
-            <re-captcha (resolved)="resolved($event)" siteKey="sitekey"></re-captcha>
-          </p>
+            <!-- <re-captcha (resolved)="resolved($event)" siteKey="{{sitekey}}"></re-captcha> -->
+            <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="sitekey"></re-captcha>
+        </p>
         </mat-card-content>
 
       </mat-card>

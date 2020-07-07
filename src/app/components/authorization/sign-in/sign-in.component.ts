@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import { Router } from "@angular/router";
 import { IUserLoginModel, IUserCreateModel } from "../../../models/user.model";
 import { LocalStorageService } from "../../../services/local-storage.service";
@@ -12,11 +12,12 @@ import { environment } from '../../../../environments/environment';
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
-  recaptcha: any[];
+  
   usertoLogin: IUserLoginModel;
   currentUser: IUserCreateModel;
   isErrorMessage: Boolean = false;
   sitekey = environment.site_key_reCAPTCHA;
+  recaptcha: any[];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -35,6 +36,7 @@ export class SignInComponent implements OnInit {
           Validators.maxLength(50),
         ]),
       ],
+      recaptchaReactive: new FormControl(null, Validators.required)
     });
   }
 
