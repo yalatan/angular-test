@@ -1,0 +1,72 @@
+<form class="form" [formGroup]="userinfoForm">
+  <h3> {{currentUser.FirstName || "User"}} {{currentUser.LastName}} Information</h3>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName">
+      <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+      <mat-error *ngIf="userinfoForm.get('firstName').hasError('required')">
+        First Name is required
+      </mat-error>
+      <mat-error *ngIf="userinfoForm.get('firstName').hasError('pattern')">
+        Please enter a valid First Name
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName">
+      <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+      <mat-error *ngIf="userinfoForm.get('lastName').hasError('required')">
+        Last Name is required
+      </mat-error>
+      <mat-error *ngIf="userinfoForm.get('lastName').hasError('pattern')">
+        Please enter a valid Last Name
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Birthday Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="Enter your Birthday Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Your city</mat-label>
+      <mat-select formControlName="city" name="city">
+        <mat-option *ngFor="let city of cities" [value]="city">
+          {{city}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Adress</mat-label>
+      <input matInput placeholder="Enter your adress" formControlName="adress" ngx-google-places-autocomplete
+        [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
+      <mat-icon matSuffix>home</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="wrapRadioButtons">
+    <label class="label">
+      <input type="radio" [value]="true" formControlName="vehicle" />
+      <span> I have vehicle </span>
+    </label>
+    <label class="label">
+      <input type="radio" [value]="false" formControlName="vehicle" />
+      <span> I have not vehicle </span>
+    </label>
+  </div>
+  <div class="row">
+    <button mat-raised-button (click)="saveChanges()">Save changes</button>
+  </div>
+
+
+</form>

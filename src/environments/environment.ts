@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  site_key_reCAPTCHA: '6Lcxl64ZAAAAAJmWM3qchGz1uCBQtyAYvgNPBJel',
+  site_key_reCAPTCHA: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', //only for test
   secrec_key_reCAPTCHA: '6Lcxl64ZAAAAAP6DlweeHZXkz7tPrk5mEOyI19vL',
+  google_autocomplete_places: 'AIzaSyCUHkLKIJTXIScYM6C_BO_HNzcKfFYoRKs'
 };
 
 /*

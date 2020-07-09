@@ -1,53 +1,54 @@
 <div class="container">
-<header class="header">
+  <header class="header">
     <button mat-raised-button [routerLink]="'/'">
       <mat-icon matSuffix class="secondary-text">undo</mat-icon> back
     </button>
-    <button mat-raised-button  [disabled]="loginForm.invalid" (click)="loginUser()">SIGN IN</button>
-  
-</header>
-<main class="main">
-  <form class="form" [formGroup]="loginForm">
-    <mat-card >
-      <mat-card-title>SIGN IN TO YOUR ACCOUNT</mat-card-title>
-      <mat-card-content>
-        <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Enter your email" formControlName="email">
-            <mat-icon matSuffix>mail</mat-icon>
-            <mat-error *ngIf="loginForm.get('email').hasError('required')">
-              Email is required
-            </mat-error>
-            <mat-error *ngIf="!loginForm.get('email').hasError('required') &&
-                              loginForm.get('email').hasError('email')">
-              Please enter a valid email address
-            </mat-error>
-          </mat-form-field>
-        </p>
-        <mat-hint *ngIf="isErrorMessage">
-          This user is not available. Please, <button mat-raised-button [routerLink]="'/signup'">
-            Sign Up
-          </button>
-        </mat-hint>
-        <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password">
-            <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
-            <mat-error>
-              Password is required
-            </mat-error>
-          </mat-form-field>
-        </p>
-        <p class="recaptcha">
-          <!-- <re-captcha (resolved)="resolved($event)" siteKey="sitekey"></re-captcha> -->
-          <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
-                      </p>
-      </mat-card-content>
-    </mat-card>
-  </form>
-</main>
+    <button mat-raised-button [disabled]="loginForm.invalid" (click)="loginUser()">SIGN IN</button>
 
-<footer class="footer"></footer>
+  </header>
+  <main class="main">
+    <form class="form" [formGroup]="loginForm">
+      <mat-card>
+        <mat-card-title>SIGN IN TO YOUR ACCOUNT</mat-card-title>
+        <mat-card-content>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Enter your email" formControlName="email">
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                Email is required
+              </mat-error>
+              <mat-error *ngIf="!loginForm.get('email').hasError('required') &&
+                              loginForm.get('email').hasError('email')">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <mat-hint *ngIf="isErrorMessage">
+            This user is not available. Please, <button mat-raised-button [routerLink]="'/signup'">
+              Sign Up
+            </button>
+          </mat-hint>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+              <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+              <mat-error>
+                Password is required
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p class="recaptcha">
+            <!-- <re-captcha (resolved)="resolved($event)" siteKey="sitekey"></re-captcha> -->
+            <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)"
+              siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </main>
+
+  <footer class="footer"></footer>
 </div>

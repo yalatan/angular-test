@@ -53,5 +53,22 @@
   background-color: $disabled-color;
 }
 ::ng-deep .mat-hint {
-  color: #f44336;
+  color: $error-color;
+}
+
+//mat-input focused color
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: $theme-color !important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+  caret-color: $text-color !important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: $text-color !important;
 }

@@ -1,9 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { IUserLoginModel, IUserCreateModel } from "../../../models/user.model";
 import { LocalStorageService } from "../../../services/local-storage.service";
-import { environment } from '../../../../environments/environment';
+import { environment } from "../../../../environments/environment";
 
 @Component({
   selector: "app-sign-in",
@@ -12,7 +17,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
-  
+
   usertoLogin: IUserLoginModel;
   currentUser: IUserCreateModel;
   isErrorMessage: Boolean = false;
@@ -36,7 +41,7 @@ export class SignInComponent implements OnInit {
           Validators.maxLength(50),
         ]),
       ],
-      recaptchaReactive: new FormControl(null, Validators.required)
+      recaptchaReactive: new FormControl(null, Validators.required),
     });
   }
 
@@ -50,7 +55,7 @@ export class SignInComponent implements OnInit {
     if (this.currentUser) {
       this._localStorageService.setCurrentUser(this.currentUser);
       this.loginForm.reset();
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/portal"]);
     } else {
       this.isErrorMessage = true;
     }
@@ -58,6 +63,5 @@ export class SignInComponent implements OnInit {
 
   resolved(captchaResponse: any[]) {
     this.recaptcha = captchaResponse;
-    console.log("this.recaptcha", this.recaptcha);
   }
 }

@@ -1,13 +1,15 @@
 <div class="container">
   <header class="header">
-    <a mat-raised-button [routerLink]="'/'">
-      <mat-icon matSuffix class="secondary-text">undo</mat-icon> back
-    </a>
-    <button mat-raised-button [disabled]="registerForm.invalid" (click)="registrateUser()">SIGN
+    <p class="top-button">Already have account? Please, <button mat-raised-button [routerLink]="'/signin'">
+        Sign IN
+      </button>
+    </p>
+    <button class="right" mat-raised-button [disabled]="registerForm.invalid" (click)="registrateUser()">SIGN
       UP</button>
   </header>
   <main class="main">
-    <form class="form" [formGroup]="registerForm" #captchaProtectedForm="ngForm" >
+
+    <form class="form" [formGroup]="registerForm" #captchaProtectedForm="ngForm">
       <mat-card>
         <mat-card-title>CREATE AN ACCOUNT</mat-card-title>
         <mat-card-content>
@@ -69,11 +71,31 @@
               </mat-error>
             </mat-form-field>
           </p>
-
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Your city</mat-label>
+              <mat-select formControlName="city" name="city">
+                <mat-option *ngFor="let city of cities" [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p class="wrapRadioButtons">
+            <label class="label">
+              <input type="radio" [value]="true" formControlName="vehicle" />
+              <span> I have vehicle </span>
+            </label>
+            <label class="label">
+              <input type="radio" [value]="false" formControlName="vehicle" />
+              <span> I have not vehicle </span>
+            </label>
+          </p>
           <p class="recaptcha">
             <!-- <re-captcha (resolved)="resolved($event)" siteKey="{{sitekey}}"></re-captcha> -->
-            <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
-        </p>
+            <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)"
+              siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
+          </p>
         </mat-card-content>
 
       </mat-card>

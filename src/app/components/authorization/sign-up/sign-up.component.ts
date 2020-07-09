@@ -1,12 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { IUserCreateModel } from "../../../models/user.model";
 import { LocalStorageService } from "../../../services/local-storage.service";
-import { environment } from '../../../../environments/environment';
-// import { ReCaptchaV3Service } from 'ng-recaptcha';
-
-
+import { environment } from "../../../../environments/environment";
+import { UserService } from "../../../services/user.service";
 
 @Component({
   selector: "app-sign-up",
@@ -14,18 +17,19 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ["./sign-up.component.scss"],
 })
 export class SignUpComponent implements OnInit {
-
   registerForm: FormGroup;
   passwordPlaceholder = "Password (8 or More Characters)";
   user: IUserCreateModel;
   isErrorMessageEmail: Boolean = false;
   sitekey = environment.site_key_reCAPTCHA;
   recaptcha: any[];
+  cities = ["Minsk", "Grodno", "Gomel", "Brest", "Vitebsk", "Mogilev"];
 
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
     private _localStorageService: LocalStorageService,
+    private _userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -57,10 +61,10 @@ export class SignUpComponent implements OnInit {
           Validators.maxLength(50),
         ]),
       ],
-      recaptchaReactive: new FormControl(null, Validators.required)
+      city: ["", [Validators.required]],
+      vehicle: ["", Validators.required],
+      recaptchaReactive: new FormControl(null, Validators.required),
     });
-
-    
   }
 
   resolved(captchaResponse: any[]) {
@@ -74,18 +78,18 @@ export class SignUpComponent implements OnInit {
       LastName: this.registerForm.value.lastName,
       Email: this.registerForm.value.email,
       Password: this.registerForm.value.password,
+      City: this.registerForm.value.city,
+      Vehicle: this.registerForm.value.vehicle,
     };
 
     if (this._localStorageService.saveUserToUsersList(this.user)) {
       this._localStorageService.setCurrentUser(this.user);
+      this._userService._isDisableVehicleInfo.next(this.user.Vehicle);
+      this._userService._isDisableVehicleInfo.complete();
       this.registerForm.reset();
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/portal"]);
     } else {
       this.isErrorMessageEmail = true;
     }
   }
 }
-
-
-
- 

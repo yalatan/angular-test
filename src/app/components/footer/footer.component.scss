@@ -1,0 +1,34 @@
+@import "../../../colors";
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border-top: 2px solid $disabled-color;
+  margin-top: 30px;
+  max-height: max-content;
+  background-color: $border-color;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    height: 50px;
+    width: 50px;
+    img {
+      height: 100%;
+    }
+  }
+  .title {
+    color: $theme-color;
+  }
+  .link {
+    text-decoration: none;
+    color: $theme-color;
+    cursor: pointer;
+  }
+}
