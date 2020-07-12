@@ -1,41 +1,41 @@
-<div class="container">
+<div class="container" [@simpleFadeAnimation]="'in'">
     <aside class="aside">
         <div class="aside-menu">
-            <mat-card [routerLink]="'/portal/user'" routerLinkActive #qwe="routerLinkActive"
+            <div class="card" [routerLink]="'/portal/user'" routerLinkActive #qwe="routerLinkActive"
                 routerLinkActive="routeractive">
                 <p class="row">
                     <span>User Info</span>
                     <mat-icon matSuffix class="secondary-text" *ngIf="qwe.isActive">keyboard_arrow_right</mat-icon>
                 </p>
-            </mat-card>
-            <mat-card [routerLink]="'/portal/vehicle'" routerLinkActive #asd="routerLinkActive"
-                routerLinkActive="routeractive" *ngIf="isDisabledVehicleInfo">
+            </div>
+            <div class="card" [routerLink]="'/portal/vehicle'" routerLinkActive #asd="routerLinkActive"
+                routerLinkActive="routeractive" *ngIf="isDisabledVehicleInfo" [@simpleFadeAnimation]="'in'">
                 <p class="row">
                     <span>Vehicle Info</span>
                     <mat-icon matSuffix class="secondary-text" *ngIf="asd.isActive">keyboard_arrow_right</mat-icon>
                 </p>
-            </mat-card>
-            <mat-card [routerLink]="'/portal/documents'" routerLinkActive #rla="routerLinkActive"
+            </div>
+            <div class="card" [routerLink]="'/portal/documents'" routerLinkActive #rla="routerLinkActive"
                 routerLinkActive="routeractive">
                 <p class="row">
                     <span>Documents</span>
                     <mat-icon matSuffix class="secondary-text" *ngIf="rla.isActive">keyboard_arrow_right</mat-icon>
                 </p>
-            </mat-card>
+            </div>
         </div>
         <div class="aside-bottom">
-            <button mat-raised-button [routerLink]="'/'">
+            <button class="button" [routerLink]="'/'" (click)="exitUser()">
                 Exit
+                <span class="spacer"></span>
                 <mat-icon matSuffix class="secondary-text">exit_to_app</mat-icon>
             </button>
         </div>
 
     </aside>
     <div class="content">
-        <mat-card>
+        <div>
             <router-outlet></router-outlet>
-        </mat-card>
-
+        </div>
     </div>
 
 </div>

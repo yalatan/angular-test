@@ -9,11 +9,13 @@ import { Router } from "@angular/router";
 import { IUserLoginModel, IUserCreateModel } from "../../../models/user.model";
 import { LocalStorageService } from "../../../services/local-storage.service";
 import { environment } from "../../../../environments/environment";
+import { simpleFadeAnimation } from '../../animation';
 
 @Component({
   selector: "app-sign-in",
   templateUrl: "./sign-in.component.html",
   styleUrls: ["./sign-in.component.scss"],
+  animations: [simpleFadeAnimation]
 })
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
@@ -31,6 +33,10 @@ export class SignInComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this._localStorageService.getCurrentUser()) {
+      this.router.navigate(["/portal"]);
+    }
+
     this.loginForm = this._formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: [

@@ -1,16 +1,13 @@
 @import "../../../colors";
+@import "../../../fonts";
+
 .footer {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  box-sizing: border-box;
-  border-top: 2px solid $disabled-color;
-  margin-top: 30px;
-  max-height: max-content;
-  background-color: $border-color;
+  justify-content: space-between;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  padding: 0 20px;
+  color: $text-color;
   .box {
     display: flex;
     align-items: center;
@@ -24,11 +21,13 @@
     }
   }
   .title {
-    color: $theme-color;
+    font-family: "Modak", cursive;
   }
   .link {
     text-decoration: none;
-    color: $theme-color;
+    color: $text-color;
+    font-size: 10px;
     cursor: pointer;
+    font-family: "Courgette", cursive;
   }
 }

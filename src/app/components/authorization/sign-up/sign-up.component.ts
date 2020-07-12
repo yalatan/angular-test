@@ -10,11 +10,13 @@ import { IUserCreateModel } from "../../../models/user.model";
 import { LocalStorageService } from "../../../services/local-storage.service";
 import { environment } from "../../../../environments/environment";
 import { UserService } from "../../../services/user.service";
+import { simpleFadeAnimation } from '../../animation';
 
 @Component({
   selector: "app-sign-up",
   templateUrl: "./sign-up.component.html",
   styleUrls: ["./sign-up.component.scss"],
+  animations: [simpleFadeAnimation]
 })
 export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
@@ -33,6 +35,10 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this._localStorageService.getCurrentUser()) {
+      this.router.navigate(["/portal"]);
+    }
+
     this.registerForm = this._formBuilder.group({
       firstName: [
         "",

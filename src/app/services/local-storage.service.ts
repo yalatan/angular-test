@@ -56,4 +56,8 @@ export class LocalStorageService {
     });
     localStorage.setItem(this.key_usersList, JSON.stringify(users));
   }
+
+  deleteCurrentUser(): void {
+    localStorage.removeItem(this.key_currentuser);
+  }
 }

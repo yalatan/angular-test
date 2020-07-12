@@ -1,106 +1,104 @@
-<div class="container">
+<div class="container" [@simpleFadeAnimation]="'in'">
   <header class="header">
-    <p class="top-button">Already have account? Please, <button mat-raised-button [routerLink]="'/signin'">
+    <p class="top-button">Already have account? Please, <button class="button" [routerLink]="'/signin'">
         Sign IN
       </button>
     </p>
-    <button class="right" mat-raised-button [disabled]="registerForm.invalid" (click)="registrateUser()">SIGN
+    <button class="button right" [disabled]="registerForm.invalid" (click)="registrateUser()">SIGN
       UP</button>
   </header>
   <main class="main">
 
     <form class="form" [formGroup]="registerForm" #captchaProtectedForm="ngForm">
-      <mat-card>
-        <mat-card-title>CREATE AN ACCOUNT</mat-card-title>
-        <mat-card-content>
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>First Name</mat-label>
-              <input matInput formControlName="firstName">
-              <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-              <mat-error *ngIf="registerForm.get('firstName').hasError('required')">
-                First Name is required
-              </mat-error>
-              <mat-error *ngIf="registerForm.get('firstName').hasError('pattern')">
-                Please enter a valid First Name
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Last Name</mat-label>
-              <input matInput formControlName="lastName">
-              <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-              <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
-                Last Name is required
-              </mat-error>
-              <mat-error *ngIf="registerForm.get('lastName').hasError('pattern')">
-                Please enter a valid Last Name
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="Enter your email" formControlName="email">
-              <mat-icon matSuffix>mail</mat-icon>
-              <mat-error *ngIf="registerForm.get('email').hasError('required')">
-                Email is required
-              </mat-error>
-              <mat-error *ngIf="registerForm.get('email').hasError('email')">
-                Please enter a valid email address
-              </mat-error>
-              <mat-error *ngIf="isErrorMessageEmail">
-                This email address has already registrated
-              </mat-error>
 
-            </mat-form-field>
-          </p>
-          <mat-hint *ngIf="isErrorMessageEmail">
-            This Email is already registered. Please, <button mat-raised-button [routerLink]="'/signin'">
-              Sign IN
-            </button>
-          </mat-hint>
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput type="password" formControlName="password" placeholder="{{passwordPlaceholder}}">
-              <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
-              <mat-error>
-                Password is required
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Your city</mat-label>
-              <mat-select formControlName="city" name="city">
-                <mat-option *ngFor="let city of cities" [value]="city">
-                  {{city}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </p>
-          <p class="wrapRadioButtons">
-            <label class="label">
-              <input type="radio" [value]="true" formControlName="vehicle" />
-              <span> I have vehicle </span>
-            </label>
-            <label class="label">
-              <input type="radio" [value]="false" formControlName="vehicle" />
-              <span> I have not vehicle </span>
-            </label>
-          </p>
-          <p class="recaptcha">
-            <!-- <re-captcha (resolved)="resolved($event)" siteKey="{{sitekey}}"></re-captcha> -->
-            <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)"
-              siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
-          </p>
-        </mat-card-content>
+      <h3>CREATE AN ACCOUNT</h3>
+      <p class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+          <mat-error *ngIf="registerForm.get('firstName').hasError('required')">
+            First Name is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('firstName').hasError('pattern')">
+            Please enter a valid First Name
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+          <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
+            Last Name is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('lastName').hasError('pattern')">
+            Please enter a valid Last Name
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" formControlName="email">
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="registerForm.get('email').hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('email').hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="isErrorMessageEmail">
+            This email address has already registrated
+          </mat-error>
 
-      </mat-card>
+        </mat-form-field>
+      </p>
+      <mat-hint *ngIf="isErrorMessageEmail">
+        This Email is already registered. Please, <button mat-raised-button [routerLink]="'/signin'">
+          Sign IN
+        </button>
+      </mat-hint>
+      <p class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="{{passwordPlaceholder}}">
+          <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+          <mat-error>
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Your city</mat-label>
+          <mat-select formControlName="city" name="city">
+            <mat-option *ngFor="let city of cities" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p class="wrapRadioButtons">
+        <label class="label">
+          <input type="radio" [value]="true" formControlName="vehicle" />
+          <span> I have vehicle </span>
+        </label>
+        <label class="label">
+          <input type="radio" [value]="false" formControlName="vehicle" />
+          <span> I have not vehicle </span>
+        </label>
+      </p>
+      <p class="recaptcha">
+        <!-- <re-captcha (resolved)="resolved($event)" siteKey="{{sitekey}}"></re-captcha> -->
+        <re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)"
+          siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
+      </p>
+
+
+
     </form>
   </main>
 
-  <footer class="footer"></footer>
 </div>

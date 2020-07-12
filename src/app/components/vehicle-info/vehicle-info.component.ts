@@ -9,12 +9,14 @@ import { LocalStorageService } from "../../services/local-storage.service";
 import { IUserCreateModel } from "../../models/user.model";
 import { IVehicleModel } from "../../models/vehicle.model";
 import { Subject, Observable } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import { simpleFadeAnimation } from '../animation';
+
 
 @Component({
   selector: "app-vehicle-info",
   templateUrl: "./vehicle-info.component.html",
   styleUrls: ["./vehicle-info.component.scss"],
+  animations: [simpleFadeAnimation]
 })
 export class VehicleInfoComponent implements OnInit {
   cars = [
@@ -86,7 +88,7 @@ export class VehicleInfoComponent implements OnInit {
 
     this.vehicleinfoForm
       .get("brand")
-      .valueChanges// .pipe(takeUntil(this._unsubscribeAll))
+      .valueChanges // .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         this.models = this.setCarModels(data);
       });

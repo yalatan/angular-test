@@ -8,11 +8,13 @@ import {
 import { LocalStorageService } from "../../services/local-storage.service";
 import { IUserCreateModel } from "../../models/user.model";
 import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
+import { simpleFadeAnimation } from '../animation';
 
 @Component({
   selector: "app-user-info",
   templateUrl: "./user-info.component.html",
   styleUrls: ["./user-info.component.scss"],
+  animations: [simpleFadeAnimation]
 })
 export class UserInfoComponent implements OnInit {
   @ViewChild("placesRef") placesRef: GooglePlaceDirective;
@@ -29,8 +31,7 @@ export class UserInfoComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _localStorageService: LocalStorageService
-  ) 
-  {}
+  ) {}
 
   ngOnInit(): void {
     this.currentUser = this._localStorageService.getCurrentUser();

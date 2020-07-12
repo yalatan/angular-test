@@ -1,0 +1,49 @@
+@import "colors";
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid $border-color;
+  background-color: $background-color;
+  color: $text-color;
+  text-decoration: none;
+  padding: 15px 15px;
+  font-size: inherit;
+  text-transform: capitalize;
+  font-weight: inherit;
+  letter-spacing: 0px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  outline: none;
+  width: 100%;
+  height: max-content;
+  cursor: pointer;
+  margin: 10px 0;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+  &:hover,
+  :focus {
+    background-color: $theme-color;
+    border-color: $border-color;
+    transition: all 0.1s ease;
+  }
+  &:active {
+    background-color: darken($theme-color, 25%);
+    transition: all 0.1s ease;
+  }
+  .spacer {
+    width: 10px;
+  }
+  p {
+    margin: 0;
+  }
+  span {
+    margin: 0;
+  }
+}
+.routeractive {
+  background-color: $theme-color;
+  transition: all 0.5s ease;
+}

@@ -1,0 +1,83 @@
+@import "colors";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-color;
+  padding: 15px 25px;
+  border-radius: 5px;
+  color: $text-color;
+  box-sizing: border-box;
+  margin: 15px;
+  width: max-content;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.9),
+    5px 5px 5px -1px rgba(0, 0, 0, 0.14), 3px 4px 3px 3px rgba(0, 0, 0, 0.12);
+
+  .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .form-button {
+    @extend .button;
+    padding: 10px 15px;
+  }
+}
+
+// ::ng-deep .mat-card {
+//     background-color: $background-color;
+//   }
+//   ::ng-deep .mat-card.transparentCard {
+//     max-width: max-content;
+//     margin: auto;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     background-color: transparent;
+//     color: $background-color;
+//     box-shadow: none;
+//   }
+
+//   ::ng-deep .mat-card-title {
+//     line-height: 70px;
+//   }
+
+::ng-deep .mat-hint {
+  color: $error-color;
+}
+
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+//mat-input focused color
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: $theme-color !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: $text-color !important;
+}
+// mat-input carent color
+::ng-deep .mat-input-element {
+  caret-color: $text-color !important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: $text-color !important;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $text-color !important;
+}
+::ng-deep .mat-select-arrow {
+  color: $text-color !important;
+  caret-color: $text-color !important;
+}

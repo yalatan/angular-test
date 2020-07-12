@@ -16,22 +16,9 @@ import { SignInModule } from "../app/components/authorization/sign-in/sign-in.mo
 import { RecaptchaModule } from "ng-recaptcha";
 import { RecaptchaV3Module } from "ng-recaptcha";
 import { TermsComponent } from "./components/terms/terms.component";
-
-// import { UserInfoComponent } from '../app/components/user-info/user-info.component';
-// import { VehicleInfoComponent } from '../app/components/vehicle-info/vehicle-info.component';
-// import { DocumentsComponent } from '../app/components/documents/documents.component';
 import { FooterComponent } from "./components/footer/footer.component";
 
 const routes: Routes = [
-  // {
-  //   path: "",
-  //   redirectTo: "landing",
-  //   pathMatch: "full",
-  // },
-  // {
-  //   path: "landing",
-  //   component: LandingPageComponent,
-  // },
   {
     path: "",
     redirectTo: "signup",
@@ -46,6 +33,10 @@ const routes: Routes = [
     path: "signin",
     redirectTo: "signin",
   },
+  {
+    path: "terms",
+    component: TermsComponent,
+  },
 
   {
     path: "portal",
@@ -53,28 +44,8 @@ const routes: Routes = [
       import("../app/components/home-page/home-page.module").then(
         (m) => m.HomePageModule
       ),
-    // redirectTo: "portal",
   },
 
-  // {
-  //   path: "user",
-  //   component: UserInfoComponent,
-  //   outlet: 'portalaside'
-  // },
-  // {
-  //   path: "vehicle",
-  //   component: VehicleInfoComponent,
-  //   outlet: 'portalaside'
-  // },
-  // {
-  //   path: "documents",
-  //   component: DocumentsComponent,
-  //   outlet: 'portalaside'
-  // },
-  {
-    path: "terms",
-    component: TermsComponent,
-  },
   {
     path: "**",
     redirectTo: "/",
@@ -86,9 +57,6 @@ const routes: Routes = [
     AppComponent,
     LandingPageComponent,
     TermsComponent,
-    // UserInfoComponent,
-    // VehicleInfoComponent,
-    // DocumentsComponent,
     FooterComponent,
   ],
   imports: [
