@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { UserInfoComponent } from "../user-info/user-info.component";
 import { VehicleInfoComponent } from "../vehicle-info/vehicle-info.component";
 import { DocumentsComponent } from "../documents/documents.component";
+import { FileUploadComponent} from "../file-upload/file-upload.component";
 
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatCardModule } from "@angular/material/card";
@@ -69,6 +70,7 @@ const routes = [
     UserInfoComponent,
     VehicleInfoComponent,
     DocumentsComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,

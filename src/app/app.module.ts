@@ -6,15 +6,16 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { MatTabsModule } from "@angular/material/tabs";
 
-import { LandingPageComponent } from "../app/components/landing-page/landing-page.component";
 import { HomePageModule } from "../app/components/home-page/home-page.module";
 import { SignUpModule } from "../app/components/authorization/sign-up/sign-up.module";
 import { SignInModule } from "../app/components/authorization/sign-in/sign-in.module";
 
 import { RecaptchaModule } from "ng-recaptcha";
 import { RecaptchaV3Module } from "ng-recaptcha";
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { TermsComponent } from "./components/terms/terms.component";
 import { FooterComponent } from "./components/footer/footer.component";
 
@@ -55,7 +56,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent,
     TermsComponent,
     FooterComponent,
   ],
@@ -65,9 +65,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatTabsModule,
     RecaptchaModule,
     RecaptchaV3Module,
+    HttpClientModule,
     SignUpModule,
     SignInModule,
     HomePageModule,

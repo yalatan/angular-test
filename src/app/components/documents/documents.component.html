@@ -1,1 +1,11 @@
-<p [@simpleFadeAnimation]="'in'">documents works!</p>
+<div class="container"  [@simpleFadeAnimation]="'in'">
+    <p>documents works!</p>
+
+    <div >    
+        <app-file-upload (complete)="onFileComplete($event)" ></app-file-upload>           
+        <button   type="button" color="accent" class="button">
+           SAVE FILE
+        </button>
+    </div>
+</div>
+
