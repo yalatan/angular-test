@@ -10,13 +10,15 @@ import { IUserCreateModel } from "../../../models/user.model";
 import { LocalStorageService } from "../../../services/local-storage.service";
 import { environment } from "../../../../environments/environment";
 import { UserService } from "../../../services/user.service";
-import { simpleFadeAnimation } from '../../animation';
+import { simpleFadeAnimation } from "../../animation";
+
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-sign-up",
   templateUrl: "./sign-up.component.html",
   styleUrls: ["./sign-up.component.scss"],
-  animations: [simpleFadeAnimation]
+  animations: [simpleFadeAnimation],
 })
 export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
@@ -26,13 +28,17 @@ export class SignUpComponent implements OnInit {
   sitekey = environment.site_key_reCAPTCHA;
   recaptcha: any[];
   cities = ["Minsk", "Grodno", "Gomel", "Brest", "Vitebsk", "Mogilev"];
+  queryParams: Params;
 
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
     private _localStorageService: LocalStorageService,
-    private _userService: UserService
-  ) {}
+    private _userService: UserService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.getRouteParams();
+  }
 
   ngOnInit(): void {
     if (this._localStorageService.getCurrentUser()) {
@@ -67,7 +73,7 @@ export class SignUpComponent implements OnInit {
           Validators.maxLength(50),
         ]),
       ],
-      city: ["", [Validators.required]],
+      city: [this.queryParams.city || "", [Validators.required]],
       vehicle: ["", Validators.required],
       recaptchaReactive: new FormControl(null, Validators.required),
     });
@@ -97,5 +103,11 @@ export class SignUpComponent implements OnInit {
     } else {
       this.isErrorMessageEmail = true;
     }
+  }
+
+  getRouteParams() {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.queryParams = params;
+    });
   }
 }

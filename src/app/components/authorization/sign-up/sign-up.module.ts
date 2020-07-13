@@ -20,6 +20,11 @@ const routes = [
     path: "signup",
     component: SignUpComponent,
   },
+  
+  {
+    path: "signup/:city_name",
+    component: SignUpComponent,
+  },
 ];
 
 @NgModule({
